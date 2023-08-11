@@ -65,6 +65,34 @@
   line-height: 1.8;
   letter-spacing: 1px;
 }
+#wrap > #home > .intro > .myico {
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+  margin: 40px auto 0;
+}
+#wrap > #home > .intro > .myico > span {
+  display: block;
+  width: 40px;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  transform: rotate(45deg);
+  transition: all 0.6s;
+}
+#wrap > #home > .intro > .myico > span:hover {
+  background-color: #52b3d9;
+  border-color: transparent;
+  cursor: pointer;
+}
+#wrap > #home > .intro > .myico > span > i {
+  display: block;
+  height: 40px;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 40px;
+  text-align: center;
+  transform: rotate(-45deg);
+}
 #wrap > #home > .mouse {
   position: absolute;
   left: 50%;
