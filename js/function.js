@@ -13,6 +13,8 @@ $(function () {
 	const $header = $home.nextAll('header');
 	const $nav = $header.find('nav'); //직계자손선택 find()
 	const $mnus = $nav.find('a');
+	const $btnGnb = $header.find('.btn-gnb');
+	const $aside = $('aside');
 
 	const $headerH = $header.height();
 	const arrTopVal = []; // header 이후에 존재하는 section의 top값
@@ -31,10 +33,23 @@ $(function () {
 	$(window).on('load resize', function () {
 		$home.height(window.innerHeight);
 
-		$h1.css({
-			//선택한 요소의 body로부터 떨어진 거리(top, left)
-			top: $intro.offset().top - 72,
-		});
+		if (window.innerWidth > 640) {
+			//PC
+			$h1.css({
+				//선택한 요소의 body로부터 떨어진 거리(top, left)
+				top: $intro.offset().top - 72,
+			});
+			$nav.show();
+		} else {
+			//Mobile
+			$h1.css({
+				top: $intro.offset().top - 100,
+			});
+
+			$btnGnb.removeClass('clse');
+			$nav.hide();
+			$home.css({ transform: 'scale(1)' });
+		}
 
 		//각 section의 top값을 배열에 저장
 		$('header~section').each(function (idx) {
@@ -47,10 +62,12 @@ $(function () {
 		const $aboutme = $home.nextAll('#aboutme');
 
 		//visual에 재미있는 효과
-		if (scrollTop > $(this).height() - 400) {
-			$home.css({ transform: 'scale(0.9)' });
-		} else {
-			$home.css({ transform: 'scale(1)' });
+		if (window.innerWidth > 640) {
+			if (scrollTop > $(this).height() - 400) {
+				$home.css({ transform: 'scale(0.9)' });
+			} else {
+				$home.css({ transform: 'scale(1)' });
+			}
 		}
 
 		//header 고정
@@ -70,6 +87,13 @@ $(function () {
 				$mnus.parent().removeClass('on');
 			}
 		} //end of for
+
+		//top 버튼 노출처리
+		if (scrollTop > 120) {
+			$aside.fadeIn();
+		} else {
+			$aside.fadeOut();
+		}
 	}); //end of scroll
 
 	$mnus.on('click', function (evt) {
@@ -82,10 +106,22 @@ $(function () {
 		$('html,body')
 			.stop()
 			.animate({ scrollTop: arrTopVal[nowIdx] - $headerH });
+
+		if (!(window.innerWidth > 640)) {
+			$btnGnb.trigger('click'); //클릭이벤트 강제발생으로 메뉴가 사라지게 만듦
+		}
 	});
 
-	$('.logo').on('click', function (evt) {
-		evt.preventDefault();
-		$('html,body').stop().animate({ scrollTop: 0 });
+	//반응형 햄버거 버튼
+	$btnGnb.on('click', function () {
+		$(this).toggleClass('clse');
+		$nav.toggle();
 	});
+
+	$('.logo')
+		.add($aside)
+		.on('click', function (evt) {
+			evt.preventDefault();
+			$('html,body').stop().animate({ scrollTop: 0 });
+		});
 });
