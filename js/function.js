@@ -5,7 +5,7 @@ $(function () {
 	$loading.delay(1000).fadeOut(2000);
 });
 
-//
+//menus & scroll
 $(function () {
 	const $home = $('#home');
 	const $h1 = $('h1');
@@ -110,7 +110,7 @@ $(function () {
 		if (!(window.innerWidth > 640)) {
 			$btnGnb.trigger('click'); //클릭이벤트 강제발생으로 메뉴가 사라지게 만듦
 		}
-	});
+	}); //end of 메뉴클릭 이벤트
 
 	//반응형 햄버거 버튼
 	$btnGnb.on('click', function () {
@@ -124,4 +124,21 @@ $(function () {
 			evt.preventDefault();
 			$('html,body').stop().animate({ scrollTop: 0 });
 		});
+});
+
+//ability
+$(function () {
+	//스크롤이 어빌리티까지 내려왔을때 실행되게
+
+	$(window).on('scroll', function () {
+		const scrollTop = $(this).scrollTop();
+
+		if (scrollTop > $('#ability').offset().top - (window.innerHeight - 400)) {
+			$('#ability .bar').each(function () {
+				$(this).width($(this).children('span').text());
+			});
+		} else if (scrollTop < $('#ability').offset().top - window.innerHeight) {
+			$('#ability .bar').width(0); // ability 영역을 벗어나 위로 올라가면 리셋
+		}
+	});
 });
