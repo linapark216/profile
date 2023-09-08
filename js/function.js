@@ -3,6 +3,11 @@ $(function () {
 	const $loading = $('.loading');
 	$loading.children('p').fadeOut(2000);
 	$loading.delay(1000).fadeOut(2000);
+
+	//load 이벤트는 화면에 데이터가 출력 완료된 시점에 발생
+	$(window).on('load', function () {
+		new WOW().init();
+	});
 });
 
 //menus & scroll
@@ -179,6 +184,7 @@ $(function () {
 			}
 
 			const $slides = $('#ux-design>.slides>.slides-container>li');
+
 			$slides.last().prependTo($container);
 			$container.css({ left: '-100%' });
 			$container.stop().animate({ left: 0 }, 1000, 'easeInOutCubic', function () {
@@ -208,5 +214,101 @@ $(function () {
 			});
 			$indicator.eq(nowIdx).parent().addClass('on').siblings().removeClass('on');
 		}
+	});
+
+	// $btnNext에 클릭이벤트 트리거 설정으로 n초마다 자동 애니메이션 되도록 설정
+	setInterval(function () {
+		$btnNext.trigger('click');
+	}, 2000);
+});
+
+//portfolio
+$(function () {
+	//포트폴리오 슬라이드
+	const $slides = $('#portfolio>.slides>.slides-container>figure');
+	const $indicator = $('#portfolio>.slides>.slides-pagination>li>a');
+	const $btnPrev = $('#portfolio .slides-prev');
+	const $btnNext = $('#portfolio .slides-next');
+
+	let nowIdx = 0;
+	let oldIdx = nowIdx;
+
+	const fadeFn = () => {
+		$slides.eq(oldIdx).stop().fadeOut(200);
+		$slides.eq(nowIdx).stop().css({ display: 'flex' }).fadeIn(200);
+		$indicator.eq(nowIdx).parent().addClass('on').siblings().removeClass('on');
+	};
+
+	$indicator.on('click', function (evt) {
+		evt.preventDefault();
+
+		oldIdx = nowIdx;
+		nowIdx = $indicator.index(this);
+
+		fadeFn();
+	});
+
+	$btnNext.on('click', function (evt) {
+		evt.preventDefault();
+
+		oldIdx = nowIdx;
+
+		nowIdx < $slides.length - 1 ? nowIdx++ : (nowIdx = 0);
+
+		fadeFn();
+	});
+
+	$btnPrev.on('click', function (evt) {
+		evt.preventDefault();
+
+		oldIdx = nowIdx;
+
+		nowIdx > 0 ? nowIdx-- : (nowIdx = $slides.length - 1);
+
+		fadeFn();
+	});
+
+	//작업과정 라이트박스
+	const $btnProc = $('#portfolio .proc');
+	const $shadow = $('#portfolio .shadow');
+	const $btnClse = $shadow.children('.clse');
+
+	$btnProc.on('click', function (evt) {
+		evt.preventDefault();
+
+		// $shadow.css({ display: 'block' });
+		// $shadow.show();
+		$shadow.fadeIn(200);
+	});
+
+	$btnClse.on('click', function () {
+		// $shadow.css({ display: 'none' });
+		// $shadow.hide();
+		$shadow.fadeOut(200);
+	});
+
+	$shadow.on('click', function () {
+		$(this).fadeOut(200);
+	});
+
+	$shadow.children('.lightbox').on('click', function (evt) {
+		evt.stopPropagation();
+	});
+
+	$(document).on('keyup', function (evt) {
+		if (evt.which === 27) {
+			$shadow.fadeOut(200);
+		}
+	});
+});
+
+//contacat
+$(function () {
+	const $tit = $('#contact dt>a');
+
+	$tit.on('click', function (evt) {
+		evt.preventDefault();
+
+		$(this).parent().toggleClass('on').next().slideToggle(500);
 	});
 });

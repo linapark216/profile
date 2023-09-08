@@ -63,6 +63,10 @@ $mobile: 'screen and (max-width:640px)';
 		letter-spacing: 1px;
 		text-transform: uppercase;
 		transform: translate(-50%, 0);
+
+		@media #{$mobile} {
+			font-size: 20px;
+		}
 	}
 	> #home {
 		overflow: hidden;
@@ -217,7 +221,7 @@ $mobile: 'screen and (max-width:640px)';
 			}
 		} //end of bgmov
 	} //end of #home
-	header {
+	> header {
 		width: 100%;
 		min-width: 1200px;
 		background-color: $pri-color-3;
@@ -280,6 +284,7 @@ $mobile: 'screen and (max-width:640px)';
 			> nav {
 				position: absolute;
 				right: 7%;
+				z-index: 1000;
 				@include transTop;
 
 				@media #{$mobile} {
@@ -328,7 +333,7 @@ $mobile: 'screen and (max-width:640px)';
 		} //end of .container
 	} //end of header
 
-	header ~ section {
+	> header ~ section {
 		padding-top: 80px;
 
 		> h2 {
@@ -349,7 +354,7 @@ $mobile: 'screen and (max-width:640px)';
 		} //end of h2
 	} //end of header ~ section
 
-	#aboutme {
+	> #aboutme {
 		> .container {
 			display: flex;
 			flex-direction: row-reverse;
@@ -477,7 +482,7 @@ $mobile: 'screen and (max-width:640px)';
 		} //end of .container
 	} //end of #aboutme
 
-	#skill {
+	> #skill {
 		> article {
 			&.skill-1 {
 				margin-bottom: 120px;
@@ -558,7 +563,7 @@ $mobile: 'screen and (max-width:640px)';
 		} //end of article
 	} //end of #skill
 
-	#ability {
+	> #ability {
 		margin-top: 100px;
 		background-color: darken($sec-color-2, 10%);
 		> h2 {
@@ -690,9 +695,14 @@ $mobile: 'screen and (max-width:640px)';
 		} //end of .resume
 	} //end of #ability
 
-	#ux-design {
+	> #ux-design {
 		width: 1200px;
 		margin: 0 auto;
+
+		@media #{$mobile} {
+			width: 100%;
+			margin: 0;
+		}
 		> .slides {
 			position: relative;
 			overflow: hidden;
@@ -718,15 +728,31 @@ $mobile: 'screen and (max-width:640px)';
 					background-size: cover;
 					&.banner_1 {
 						background-image: url(../images/uxdesign/slides/slide_1.png);
+
+						@media #{$mobile} {
+							background-image: url(../images/uxdesign/slides/rwd_slide_1.png);
+						}
 					}
 					&.banner_2 {
 						background-image: url(../images/uxdesign/slides/slide_2.jpg);
+
+						@media #{$mobile} {
+							background-image: url(../images/uxdesign/slides/rwd_slide_2.png);
+						}
 					}
 					&.banner_3 {
 						background-image: url(../images/uxdesign/slides/slide_3.jpg);
+
+						@media #{$mobile} {
+							background-image: url(../images/uxdesign/slides/rwd_slide_3.png);
+						}
 					}
 					&.banner_4 {
 						background-image: url(../images/uxdesign/slides/slide_4.jpg);
+
+						@media #{$mobile} {
+							background-image: url(../images/uxdesign/slides/rwd_slide_4.png);
+						}
 					}
 				} //end of li
 			} //end of .slides-container
@@ -777,7 +803,831 @@ $mobile: 'screen and (max-width:640px)';
 				}
 			} //end of .slides-navigation
 		} //end of .slides
+		> .intro {
+			padding: 80px 0 104px;
+			> h3 {
+				position: relative;
+				margin-bottom: 56px;
+				font-weight: 500;
+				font-size: 32px;
+				text-align: center;
+
+				@media #{$mobile} {
+					line-height: 1.4;
+
+					> span {
+						display: block;
+						height: 0;
+						text-indent: -9999px;
+					}
+				}
+
+				&:before {
+					position: absolute;
+					left: 0;
+					top: 0;
+					display: block;
+					width: 48px;
+					height: 86px;
+					background-image: url(../images/decoBlockTransparent.png);
+					content: '';
+				}
+				&:after {
+					position: absolute;
+					right: 0;
+					top: 156px;
+					display: block;
+					width: 58px;
+					height: 156px;
+					background-image: url(../images/decoBlockBlue.png);
+					content: '';
+				}
+				@media #{$mobile} {
+					&:after,
+					&:before {
+						display: none;
+					}
+				}
+			} //end of h3
+			> p {
+				width: 664px;
+				margin: 0 auto 80px;
+				line-height: 2;
+
+				@media #{$mobile} {
+					width: 90%;
+					line-height: 1.6;
+				}
+				> span {
+					display: block;
+					margin-bottom: 30px;
+				}
+			} //end of p
+
+			> .bus-alram {
+				display: flex;
+
+				@media #{$mobile} {
+					flex-direction: column-reverse;
+				}
+				> h4 {
+					width: 43%;
+					margin-right: 20px;
+					align-self: flex-end;
+					font-size: 16px;
+					font-weight: 400;
+					text-align: right;
+
+					@media #{$mobile} {
+						width: 100%;
+						margin-right: 0;
+						text-align: center;
+					}
+				}
+				> .frame {
+					width: 527px;
+
+					@media #{$mobile} {
+						width: 90%;
+						margin: 0 auto 10px;
+					}
+					> img {
+						display: block;
+						width: 100%;
+					}
+				}
+			} //end of .bus-alram
+		} //end of .intro
+		> .uxui {
+			width: 1200px;
+			padding-bottom: 104px;
+
+			@media #{$mobile} {
+				width: 100%;
+			}
+			> h3 {
+				position: relative;
+				width: 330px;
+				margin: 0 auto 156px;
+				padding-bottom: 20px;
+				font-size: 32px;
+				font-weight: 500;
+				text-align: center;
+				border-bottom: 2px solid $sec-color-3;
+
+				@media #{$mobile} {
+					margin-bottom: 50px;
+				}
+
+				&:after,
+				&:before {
+					position: absolute;
+					top: 130px;
+					color: $pri-color-2;
+					font-weight: 800;
+					font-size: 36px;
+				}
+				&:after {
+					right: 50%;
+					margin-right: -200px;
+					content: 'UI';
+
+					@media #{$mobile} {
+						top: 520px;
+						width: 40px;
+						margin-right: -20px;
+						font-size: 24px;
+						text-align: center;
+					}
+				}
+				&:before {
+					left: 50%;
+					margin-left: -200px;
+					content: 'UX';
+
+					@media #{$mobile} {
+						top: 210px;
+						width: 40px;
+						margin-left: -20px;
+						font-size: 24px;
+						text-align: center;
+					}
+				}
+			} //end of h3
+			> .container {
+				@media #{$mobile} {
+					display: flex;
+					justify-content: center;
+				}
+				> .uxui-case {
+					position: relative;
+					display: flex;
+					flex-flow: row nowrap;
+
+					@media #{$mobile} {
+						flex-direction: column;
+						width: 40%;
+
+						&:first-child {
+							margin-right: 25px;
+						}
+						&:last-child {
+							margin-left: 25px;
+						}
+					}
+
+					&:hover > .ui-frame {
+						left: 0;
+						margin-left: 0;
+					}
+					&:hover > .ux-frame {
+						right: 0;
+						margin-right: 0;
+					}
+					&:nth-of-type(2) {
+						margin-top: 30px;
+						@media #{$mobile} {
+							margin-top: 0;
+						}
+					}
+					> dl {
+						order: 200;
+						width: 40%;
+						height: 280px;
+						margin: 0 auto;
+						padding-top: 100px;
+						text-align: center;
+						background-color: darken($sec-color-3, 10%);
+						box-sizing: border-box;
+
+						@media #{$mobile} {
+							width: 100%;
+							padding: 80px 10px 0;
+						}
+						> dt {
+							margin-bottom: 30px;
+							color: lighten($sec-color-2, 10%);
+							font-size: 20px;
+							font-weight: 600;
+
+							@media #{$mobile} {
+								line-height: 1.3;
+							}
+						}
+						> dd {
+							color: lighten($sec-color-2, 10%);
+							font-size: 13px;
+							line-height: 1.6;
+
+							@media #{$mobile} {
+								> br {
+									display: none;
+								}
+							}
+						}
+					} //end of dl
+					> .ui-frame {
+						order: 100;
+						display: block;
+						position: absolute;
+						left: 50%;
+						top: 0;
+						width: 420px;
+						height: 280px;
+						margin-left: -420px;
+						transition: all 0.3s ease-out;
+
+						@media #{$mobile} {
+							position: initial;
+							width: 100%;
+							height: auto;
+							margin: 0;
+						}
+						> img {
+							display: block;
+							width: 100%;
+							height: 100%;
+							border-radius: 140px 0 0 140px;
+
+							@media #{$mobile} {
+								border-radius: 150px 150px 0 0;
+							}
+						}
+					} //end of ui-frame
+					> .ux-frame {
+						order: 300;
+						display: block;
+						position: absolute;
+						right: 50%;
+						top: 0;
+						width: 420px;
+						height: 280px;
+						margin-right: -420px;
+						transition: all 0.3s ease-out;
+
+						@media #{$mobile} {
+							position: initial;
+							width: 100%;
+							height: auto;
+							margin: 0;
+						}
+						> img {
+							display: block;
+							width: 100%;
+							height: 100%;
+							border-radius: 0 140px 140px 0;
+
+							@media #{$mobile} {
+								border-radius: 0 0 150px 150px;
+							}
+						}
+					} //end of ux-frame
+				} //end of .uxui-case
+			} //end of .container
+		} //end of .uxui
 	} //end of ux-design
+
+	> #portfolio {
+		> article {
+			width: 1200px;
+			margin: 0 auto;
+
+			@media #{$mobile} {
+				width: 100%;
+			}
+
+			&.slides {
+				position: relative;
+
+				@media #{$mobile} {
+					display: flex;
+					flex-direction: column-reverse;
+				}
+				> .slides-pagination {
+					display: flex;
+					justify-content: space-around;
+					width: 840px;
+					margin: 0 auto 96px;
+
+					@media #{$mobile} {
+						position: absolute;
+						left: 50%;
+						bottom: 6px;
+						z-index: 100;
+						width: 180px;
+						margin: 0;
+						background-color: $sec-color-3;
+						border-radius: 50px;
+						transform: translate(-50%, 0);
+					}
+
+					> li {
+						overflow: hidden;
+						width: 120px;
+						border: 1px solid $sec-color-3;
+						border-radius: 20px;
+
+						@media #{$mobile} {
+							width: 60px;
+						}
+
+						&:hover > a,
+						&.on > a {
+							color: $pri-color-3;
+							background-color: $pri-color-2;
+						}
+						> a {
+							display: block;
+							height: 40px;
+							line-height: 40px;
+							text-align: center;
+
+							@media #{$mobile} {
+								height: 10px;
+								text-indent: -9999px;
+								transition: all 0.2s;
+							}
+						}
+					}
+				} //end of .slides-pagination
+				> .slides-container {
+					overflow: hidden;
+					position: relative;
+					height: 380px;
+					@media #{$mobile} {
+						height: 600px;
+					}
+					> figure {
+						display: none;
+						justify-content: space-between;
+						position: absolute;
+						left: 0;
+						top: 0;
+
+						@media #{$mobile} {
+							flex-direction: column-reverse;
+							width: 100%;
+						}
+
+						&:nth-of-type(1) {
+							display: flex;
+						}
+						> figcaption {
+							width: 500px;
+							padding-top: 35px;
+
+							@media #{$mobile} {
+								width: 80%;
+								margin: 0 auto;
+								padding-bottom: 50px;
+							}
+							> h3 {
+								font-size: 28px;
+								font-weight: 600;
+								line-height: 24px;
+							} //end of h3
+							> .tip {
+								margin-top: 8px;
+								color: darken($sec-color-3, 50%);
+							}
+							> .desc,
+							.tools,
+							.etc {
+								margin-top: 20px;
+								color: darken($sec-color-3, 70%);
+								line-height: 24px;
+
+								> span {
+									font-weight: 800;
+								}
+							} //end of .desc 외 그룹 선택자
+							> .etc {
+								margin: 0 0 30px 0;
+							}
+							> .btn {
+								display: flex;
+								> a {
+									display: block;
+									width: 132px;
+									height: 40px;
+									font-size: 15px;
+									line-height: 40px;
+									text-align: center;
+									letter-spacing: 2px;
+									background-color: $sec-color-3;
+									border-radius: 50px;
+									transition: all 0.3s;
+
+									&.proc {
+										margin-right: 10px;
+										border: 1px solid $sec-color-1;
+										box-sizing: border-box;
+
+										@media #{$mobile} {
+											display: none;
+										}
+									}
+									&:hover {
+										color: $pri-color-3;
+										background-color: $sec-color-1;
+									}
+								} //end of a
+							} //end of .btn
+							> .shadow {
+								display: none;
+								position: fixed;
+								left: 0;
+								right: 0;
+								top: 0;
+								bottom: 0;
+								z-index: 1000;
+								background-color: rgba(0, 0, 0, 0.5);
+								> .lightbox {
+									overflow-y: scroll;
+									position: absolute;
+									left: 50%;
+									top: 50%;
+									width: 960px;
+									height: 90vh;
+									transform: translate(-50%, -50%);
+
+									> img {
+										display: block;
+										width: 100%;
+									}
+								} //end of lightbox
+								> .clse {
+									position: absolute;
+									left: 50%;
+									bottom: 60px;
+									margin-left: 400px;
+									padding: 5px 10px;
+								}
+							} //end of .shadow
+						} //end of figcaption
+						> .frame {
+							position: relative;
+							width: 700px;
+							height: 380px;
+							background-image: url(./../images/portfolio/bg_macbook.png);
+
+							@media #{$mobile} {
+								width: 360px;
+								height: 198px;
+								margin: 0 auto;
+								background-size: contain;
+							}
+							> img {
+								position: absolute;
+								left: 76px;
+								top: 27px;
+								display: block;
+								width: 553px;
+
+								@media #{$mobile} {
+									width: 280px;
+									left: 42px;
+									top: 18px;
+								}
+							}
+						} //end of .frame
+					} //end of figure
+				} //end of .slides-container
+				> .slides-navigation {
+					display: none;
+					@media #{$mobile} {
+						position: absolute;
+						bottom: 0;
+						display: block;
+						width: 50px;
+						height: 25px;
+						text-indent: -9999px;
+
+						&.slides-prev {
+							left: 7%;
+							background-image: url(../images/portfolio/btn_prev.png);
+						}
+						&.slides-next {
+							right: 7%;
+							background-image: url(../images/portfolio/btn_next.png);
+						}
+					}
+				} //end of .slides-navigation
+			} //end of slides
+			&.intro {
+				width: 100%; //배경이미지가 자연스럽게 보이게 하기 위함
+				background-image: url(../images/portfolio/bg_pofol.png);
+				background-size: cover;
+				> .container {
+					width: 1200px;
+					margin: 0 auto;
+					padding: 80px 0;
+
+					@media #{$mobile} {
+						width: 100%;
+					}
+					> h3 {
+						position: relative;
+						margin-bottom: 56px;
+						font-weight: 500;
+						font-size: 32px;
+						text-align: center;
+
+						@media #{$mobile} {
+							line-height: 1.4;
+
+							> span {
+								display: block;
+								height: 0;
+								text-indent: -9999px;
+							}
+						}
+
+						&:before {
+							position: absolute;
+							left: 0;
+							top: 0;
+							display: block;
+							width: 48px;
+							height: 86px;
+							background-image: url(../images/decoBlockTransparent.png);
+							content: '';
+						}
+						&:after {
+							position: absolute;
+							right: 0;
+							top: 156px;
+							display: block;
+							width: 58px;
+							height: 156px;
+							background-image: url(../images/decoBlockBlue.png);
+							content: '';
+						}
+						@media #{$mobile} {
+							&:after,
+							&:before {
+								display: none;
+							}
+						}
+					} //end of h3
+					> p {
+						width: 664px;
+						margin: 0 auto 80px;
+						line-height: 2;
+
+						@media #{$mobile} {
+							width: 90%;
+							margin-bottom: 30px;
+							line-height: 1.6;
+						}
+						> span {
+							display: block;
+							margin-bottom: 30px;
+						}
+					} //end of p
+
+					> .coding {
+						margin-top: 100px;
+
+						@media #{$mobile} {
+							margin-top: 0;
+						}
+						> h4 {
+							position: relative;
+							height: 300px;
+							margin-bottom: 140px;
+							font-weight: 400;
+
+							@media #{$mobile} {
+								width: 90%;
+								margin: 0 auto 50px;
+								text-align: center;
+							}
+							> span {
+								position: absolute;
+								left: 50%;
+								bottom: 0;
+								margin-left: -140px;
+
+								@media #{$mobile} {
+									left: 0;
+									bottom: -20px;
+									width: 100%;
+									margin: 0;
+								}
+							}
+							&:after {
+								position: absolute;
+								right: 35px;
+								bottom: 0;
+								z-index: -1;
+								display: block;
+								width: 470px;
+								height: 300px;
+								background-image: url(../images/portfolio/code01.png);
+								content: '';
+
+								@media #{$mobile} {
+									width: 100%;
+									right: 50%;
+									margin-right: -50%;
+								}
+							}
+						} //end of h4
+						> div {
+							height: 436px;
+							padding-left: 550px;
+							background-image: url(../images/portfolio/code02.png);
+							background-position: 50px 0;
+							background-repeat: no-repeat;
+
+							@media #{$mobile} {
+								width: 90%;
+								margin: 0 auto;
+								padding-left: 0;
+								padding-bottom: 320px;
+								background-position: bottom;
+							}
+
+							> h4 {
+								padding: 30px 0;
+								font-size: 32px;
+
+								@media #{$mobile} {
+									font-size: 18px;
+									font-weight: 500;
+								}
+							}
+							> p {
+								line-height: 30px;
+
+								@media #{$mobile} {
+									line-height: 1.6;
+
+									br {
+										display: none;
+									}
+								}
+								> span {
+									display: block;
+									margin-bottom: 30px;
+
+									@media #{$mobile} {
+										margin-bottom: 20px;
+									}
+								}
+							} //end of p
+						} //end of div
+					} //end of .coding
+				}
+			} //end of .intro
+		} //end of article
+	} //end of portfolio
+
+	#contact {
+		width: 1200px;
+		margin: 0 auto 150px;
+
+		@media #{$mobile} {
+			width: 100%;
+			margin: 0;
+			margin-bottom: 50px;
+		}
+		> .apply {
+			border: 1px solid darken($sec-color-3, 10%);
+			border-radius: 5px;
+			box-sizing: border-box;
+
+			@media #{$mobile} {
+				border: none;
+			}
+			> .help {
+				position: relative;
+				height: 120px;
+				border-bottom: 1px solid darken($sec-color-3, 10%);
+
+				@media #{$mobile} {
+					width: 90%;
+					margin: 0 auto;
+				}
+
+				> h3 {
+					position: absolute;
+					left: 120px;
+					top: 52px;
+					font-size: 32px;
+					font-weight: 500;
+
+					@media #{$mobile} {
+						position: initial;
+					}
+
+					&:after {
+						position: absolute;
+						right: -90px;
+						top: -10px;
+						display: block;
+						width: 1px;
+						height: 50px;
+						background-color: darken($sec-color-3, 10%);
+						content: '';
+
+						@media #{$mobile} {
+							display: none;
+						}
+					}
+				} //end of h3
+				> p {
+					position: absolute;
+					left: 650px;
+					top: 40px;
+					font-size: 18px;
+					line-height: 24px;
+
+					@media #{$mobile} {
+						position: initial;
+						margin-top: 20px;
+					}
+				} //end of p
+			} //end fo .help
+			> dl {
+				@media #{$mobile} {
+					width: 90%;
+					margin: 0 auto;
+				}
+				> dt {
+					&.on {
+						background-color: $sec-color-1;
+
+						> a {
+							color: $pri-color-3;
+							border-bottom-color: transparent;
+
+							&:after {
+								background-image: url(../images/contact/after_up.png);
+							}
+						}
+					}
+					> a {
+						position: relative;
+						display: block;
+						width: 90%;
+						margin: 0 auto;
+						font-size: 14px;
+						line-height: 70px;
+						border-bottom: 1px solid $sec-color-3;
+
+						&:after {
+							position: absolute;
+							right: 0;
+							top: 50%;
+							display: block;
+							width: 15px;
+							height: 19px;
+							margin-top: -5px;
+							background-image: url(../images/contact/after_down.png);
+							background-repeat: no-repeat;
+							content: '';
+						}
+					}
+					&:nth-of-type(5) > a {
+						border-bottom: none;
+					}
+				} //end of dt
+				> dd {
+					display: none;
+					background-color: lighten($sec-color-3, 2%);
+
+					> .answer {
+						margin: 0 90px;
+						padding: 40px 0;
+
+						@media #{$mobile} {
+							margin: 0 20px;
+						}
+					}
+				} //end of dd
+			} //end of dl
+			> p {
+				display: flex;
+				align-items: center;
+				height: 100px;
+				padding-left: 72px;
+				line-height: 32px;
+				background-color: darken($sec-color-3, 1%);
+				background-image: url(../images/contact/thank.png);
+				background-position: 95% 60%;
+				background-repeat: no-repeat;
+
+				@media #{$mobile} {
+					height: 150px;
+					padding: 0 20px;
+					text-align: center;
+					background-image: none;
+				}
+			} //end of p
+		} //end of .apply
+	} //end of #contact
 
 	> footer {
 		min-width: 1200px;
